@@ -9,6 +9,13 @@ Before starting, ensure you have the following installed:
 
 - Git
 - CMake
+- Make
+
+## Used Packages in Project
+
+Look:
+
+- Vim
 
 ## Installation
 
