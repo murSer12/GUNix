@@ -8,8 +8,9 @@
 #include <vector>
 #include <mutex>
 #include "system/boot.h"
-#include "system/terminal.h"
 #include "packages/packet-manager.h"
+#include "system/terminal.h"
+
 
 using namespace std;
 

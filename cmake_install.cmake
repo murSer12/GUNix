@@ -1,4 +1,4 @@
-# Install script for directory: /home/mur/Документы/Cpp
+# Install script for directory: /home/mur/Документы/GitHub/GUNix
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -57,6 +57,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-  file(WRITE "/home/mur/Документы/Cpp/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/home/mur/Документы/GitHub/GUNix/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

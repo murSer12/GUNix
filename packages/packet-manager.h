@@ -1,5 +1,7 @@
 using namespace std;
 
+bool en = true;
+
 int warn_connect(){
     string ip = "104.26.14.72";
     int clientSocket = socket(AF_INET, SOCK_STREAM, 0);
@@ -40,3 +42,26 @@ int warn_connect(){
     return 0; 
 }
 
+void language_show(){
+  cout << "Supports only English\n";
+  cout << "Now language is English\n";
+  cout << "Showing Languages...\n";
+  cout << "en_US.UTF8\n";
+  cout << "ru_RU.UTF8\n";
+}
+
+void language_set(){
+  string language;
+  cout << "Write language form language-show\n";
+  cout << "> ";
+  cin >> language;
+  if(en){
+    cout << "Language not changed (English already in system)\n";
+  }
+  else if(!en && language == "en_US.UTF8"){
+    cout << "Changed language to English\n";
+  }
+  else {
+    cout << "Cannot found language!\n";
+  }
+}

@@ -1,6 +1,7 @@
 CMakeFiles/hello.dir/main.cpp.o: \
- /home/mur/Документы/Cpp/main.cpp /usr/include/stdc-predef.h \
- /usr/include/c++/14.2.1/cstring /usr/include/c++/14.2.1/bits/version.h \
+ /home/mur/Документы/GitHub/GUNix/main.cpp \
+ /usr/include/stdc-predef.h /usr/include/c++/14.2.1/cstring \
+ /usr/include/c++/14.2.1/bits/version.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -170,6 +171,6 @@ CMakeFiles/hello.dir/main.cpp.o: \
  /usr/include/c++/14.2.1/bits/vector.tcc /usr/include/c++/14.2.1/mutex \
  /usr/include/c++/14.2.1/bits/std_mutex.h \
  /usr/include/c++/14.2.1/bits/unique_lock.h \
- /home/mur/Документы/Cpp/system/boot.h \
- /home/mur/Документы/Cpp/system/terminal.h \
- /home/mur/Документы/Cpp/packages/packet-manager.h
+ /home/mur/Документы/GitHub/GUNix/system/boot.h \
+ /home/mur/Документы/GitHub/GUNix/packages/packet-manager.h \
+ /home/mur/Документы/GitHub/GUNix/system/terminal.h
