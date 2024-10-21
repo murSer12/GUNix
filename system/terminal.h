@@ -1,10 +1,13 @@
 using namespace std;
 
+bool isUser = false;
+
 void terminal(){
   cout << "[OK] Terminal started!\n";
-  while(true){
+    if(choose_user){
+    while (true){
     string input;
-    cout << "root@gunix : ";
+    cout << username + "@gunix : ";
     cin >> input;
     if(input == "exit"){
       exit(0);
@@ -15,8 +18,24 @@ void terminal(){
     else if(input == "language-set"){
       language_set();
     }
+    else if(input == "passwd"){
+      passwd();
+    }
+    else if(input == "create-user"){
+      create_user();
+    }
+    else if(input == "choose-user"){
+      choose_user();
+    }
+    else if(input == "show-user"){
+      show_user();
+    }
     else {
       cout << "Unknown command!\n";
     }
-  }
+    }
+    }
+    else {
+
+    }
 }

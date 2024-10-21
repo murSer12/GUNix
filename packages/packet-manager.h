@@ -1,6 +1,15 @@
 using namespace std;
 
+bool wrong_root = false;
 bool en = true;
+bool have_user = false;
+bool root_password_b = false;
+string root_password = NULL;
+bool user_password_b = false;
+bool username_b = false; 
+extern string username;
+string user_password = NULL;
+bool logined_user = false;
 
 int warn_connect(){
     string ip = "104.26.14.72";
@@ -42,6 +51,15 @@ int warn_connect(){
     return 0; 
 }
 
+bool isLogined(){
+  if(logined_user){
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
 void language_show(){
   cout << "Supports only English\n";
   cout << "Now language is English\n";
@@ -65,3 +83,108 @@ void language_set(){
     cout << "Cannot found language!\n";
   }
 }
+
+void passwd(){
+  if(root_password_b == false){
+    string root_password_test;
+    cout << "\n";
+    cout << "Write new password : ";
+    cin >> root_password;
+    cout << "\n";
+    cout << "Retype password : ";
+    cin >> root_password_test;
+    if(root_password_test != root_password){
+      while(true){
+      cout << "Wrong password retype again!\n";
+      cout << "\n";
+      cout << "Retype password : ";
+      cin >> root_password_test;
+      if(root_password_test == root_password){
+        root_password_b = true;
+        cout << "Root password created\n";
+      }
+    }
+  }
+  else {
+    cout << "Root already has password\n";
+  }
+}
+}
+
+
+void create_user(){
+  if(username_b == false){
+    cout << "\n";
+    cout << "Write username : ";
+    cin >> username;
+    cout << "\n";
+    string user_password_test;
+    cout << "Write new password : ";
+    cin >> user_password;
+    cout << "\n";
+    cout << "Retype password : ";
+    cin >> user_password_test;
+    if(user_password_test != user_password){
+      while(true){
+      cout << "Wrong password retype again!\n";
+      cout << "\n";
+      cout << "Retype password : ";
+      cin >> user_password_test;
+      if(user_password_test == user_password){
+        username_b = true;
+        user_password_b = true;
+        cout << "User created\n";
+      }
+    }
+    }
+  }
+}
+
+void show_user(){
+  cout << "Your user is : " + username + "\n";
+}
+
+bool choose_user(){
+  string username_test;
+  string user_password_test;
+  cout << "\n";
+  cout << "Write username : ";
+  cin >> username_test;
+  if(username_test == username){
+    cout << "\n";
+    cout << "Write user password : ";
+    cin >> user_password_test;
+    if(user_password_test == user_password){
+      logined_user = true;
+      cout << "Logined successfully";
+    }
+    else {
+      while(true){
+      cout << "Wrong password try again!\n";
+      cout << "\n";
+      cout << "Write user password : ";
+      cin >> user_password_test;
+      if(user_password_test == user_password){
+        logined_user = true;
+        cout << "Welcome , \n" + username;
+        return true;
+        break;
+      }
+      }
+    }
+  }
+  else {
+    while(true){
+    cout << "Wrong username try again!\n";
+    cout << "\n";
+    cout << "Write username : ";
+    cin >> username_test;
+    if(username_test == username){
+        logined_user = true;
+        cout << "Welcome , \n" + username;
+        break;
+    }
+    }
+  }
+}
+

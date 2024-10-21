@@ -1,0 +1,3 @@
+/home/mur/Документы/GitHub/GUNix/CMakeFiles/hello.dir
+/home/mur/Документы/GitHub/GUNix/CMakeFiles/edit_cache.dir
+/home/mur/Документы/GitHub/GUNix/CMakeFiles/rebuild_cache.dir
