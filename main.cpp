@@ -7,9 +7,8 @@
 #include <thread>
 #include <vector>
 #include <mutex>
-#include "system/boot.h"
-#include "packages/packet-manager.h"
-#include "system/terminal.h"
+#include "arch/boot.h"
+#include "kernel/sys-controller.h"
 
 
 using namespace std;
@@ -17,6 +16,5 @@ using namespace std;
 int main(){
   system_load();
   warn_connect();
-  terminal();
   return 0;
 }
