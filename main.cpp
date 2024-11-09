@@ -10,11 +10,11 @@
 #include "arch/boot.h"
 #include "kernel/sys-controller.h"
 
-
 using namespace std;
 
 int main(){
-  system_load();
   warn_connect();
+  system_load();
+  terminal();
   return 0;
 }
