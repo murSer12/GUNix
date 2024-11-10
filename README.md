@@ -28,4 +28,4 @@ Follow these steps to install and set up GUNix:
 3. **Building and Load**  
    Run the following command to ensure you have Git installed:
    ```bash
-   cmake . && make && ./hello
+   cmake . && make && ./gunix
