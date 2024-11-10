@@ -41,7 +41,7 @@ bool warn_connect(){
 }
 
 int system_load(){
-	cout << "Loading system...\n";
+	cout << "[PROCCESS] Loading system...\n";
 	bool load = warn_connect();
 	if(load == false){
        cout << "[CRITICAL ERROR] Cannot load system!\n";
