@@ -1,6 +1,3 @@
-#include <iostream>
-#include <string>
-
 using namespace std;
 
 class Root {
@@ -8,12 +5,42 @@ private:
   int password;
 public:
   void create_root_pass();
+  bool writeRootPassword();
 };
 
 void Root::create_root_pass(){
   cout << "Write password superuser (Integer type only!): ";
   cin >> password;
   cout << "Password created! : " << password << endl;
+}
+
+bool Root::writeRootPassword() {
+  bool isPass;
+  int attempts = 3;
+  int root_pass;
+  cout << "Write user password : ";
+  cin >> root_pass;
+  isPass = root_pass == password;
+  if(isPass){
+    return true;
+  }
+  else {
+     while(root_pass != password){
+       --attempts;
+       cout << "Wrong password try again (you have " << attempts << " attempts)\n\n";
+       cout << "Write user password : ";
+       cin >> root_pass;
+       if(attempts == 0){
+         return false;
+         break;
+       }
+       else if(root_pass == password && attempts > 0){
+        return true;
+        break;
+       }
+     }
+  }
+  return true;
 }
 
 class User {
@@ -26,6 +53,37 @@ public:
     bool isSelectedTest();
     bool writePassword();
 };
+
+class Language {
+public:
+  vector <string> language{"en_US"};
+  vector <bool> languageBool;
+  void setLanguage();
+  void showLanguage();
+};
+
+void Language::setLanguage(){
+  vector <string>::iterator languageIter;
+  int i = 1;
+  for (languageIter = language.begin(); languageIter != language.end() ; ++languageIter) {
+
+    cout << i << " - " << *languageIter << endl;
+  }
+  int language_test;
+  cout << "Write language what you want to set : ";
+  cin >> language_test;
+  switch (language_test) {
+    case 1:
+      languageBool.push_back(true);
+  }
+}
+
+void Language::showLanguage(){
+  vector <string>::iterator languageIter;
+  for (languageIter = language.begin() ; languageIter != language.end() ; ++languageIter) {
+    cout << *languageIter << endl;
+  }
+}
 
 void User::create_user() {
     int selectUser;
@@ -63,26 +121,31 @@ bool User::writePassword(){
   }
   else {
      while(user_pass != password){
-       --attempts;
-       int user_pass_again;
-       cout << "Wrong password try again (you have " << attempts << " attempts)\n\n";
-       cout << "Write user password : ";
-       cin >> user_pass_again;
-       if(attempts == 0){
+       if(attempts <= 0){
          return false;
          break;
        }
-       else{
-         return true;
+       --attempts;
+       cout << "Wrong password try again (you have " << attempts << " attempts)\n\n";
+       cout << "Write user password : ";
+       cin >> user_pass;
+       if(attempts <= 0){
+         return false;
          break;
+       }
+       else if(user_pass == password && attempts > 0){
+        return true;
+        break;
        }
      }
   }
+  return true;
 }
 
 void terminal() {
     bool userSel = false;
     bool canRoot = true;
+    Language language;
     User user;
     Root root;
     string help[3][2] = {
@@ -141,6 +204,8 @@ void terminal() {
           else {
             cout << "Only super user can do this operation!\n\n";
           }
+        } else if (console == "set-language"){
+          language.setLanguage();
         }
     }
 }
