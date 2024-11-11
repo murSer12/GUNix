@@ -3,22 +3,45 @@ using namespace std;
 class Root {
 private:
   int password;
+  bool isRootPassed = false;
 public:
+  string root = "root";
+  bool isRootSelected = true;
   void create_root_pass();
+  bool isRootSelectedTest();
+  bool isRootPassedTest();
   bool writeRootPassword();
+  void selectSuperUser();
 };
+
+void Root::selectSuperUser() {
+    if (isRootPassed) {
+        bool isPass = writeRootPassword();
+        if (isPass) {
+            cout << "Root selected";
+        }
+    }
+    else {
+        cout << "Root selected";
+    }
+}
 
 void Root::create_root_pass(){
   cout << "Write password superuser (Integer type only!): ";
   cin >> password;
-  cout << "Password created! : " << password << endl;
+  isRootPassed = true;
+  cout << "Password created!\n\n";
+}
+
+bool Root::isRootSelectedTest() {
+    return isRootSelected;
 }
 
 bool Root::writeRootPassword() {
   bool isPass;
   int attempts = 3;
   int root_pass;
-  cout << "Write user password : ";
+  cout << "Write superuser password : ";
   cin >> root_pass;
   isPass = root_pass == password;
   if(isPass){
@@ -26,21 +49,29 @@ bool Root::writeRootPassword() {
   }
   else {
      while(root_pass != password){
-       --attempts;
-       cout << "Wrong password try again (you have " << attempts << " attempts)\n\n";
-       cout << "Write user password : ";
-       cin >> root_pass;
-       if(attempts == 0){
-         return false;
-         break;
-       }
-       else if(root_pass == password && attempts > 0){
-        return true;
-        break;
-       }
+         if (attempts == 0) {
+             return false;
+             break;
+         }
+         --attempts;
+         cout << "Wrong password try again (you have " << attempts << " attempts)\n\n";
+         cout << "Write user password : ";
+         cin >> root_pass;
+         if (attempts == 0) {
+             return false;
+             break;
+         }
+         else if (root_pass == password && attempts > 0) {
+             return true;
+             break;
+         }
      }
   }
   return true;
+}
+
+bool Root::isRootPassedTest() {
+    return isRootPassed;
 }
 
 class User {
@@ -121,7 +152,7 @@ bool User::writePassword(){
   }
   else {
      while(user_pass != password){
-       if(attempts <= 0){
+       if(attempts == 0){
          return false;
          break;
        }
@@ -129,7 +160,7 @@ bool User::writePassword(){
        cout << "Wrong password try again (you have " << attempts << " attempts)\n\n";
        cout << "Write user password : ";
        cin >> user_pass;
-       if(attempts <= 0){
+       if(attempts == 0){
          return false;
          break;
        }
@@ -161,7 +192,7 @@ void terminal() {
         } else {
             userSel = false;
             canRoot = true;
-            cout << "root@gunix : ";
+            cout << root.root << "@gunix : ";
         }
         string console;
         cin >> console;
@@ -175,6 +206,19 @@ void terminal() {
             cout << "Wrong password exiting!";
             break;
           }
+        }
+        else {
+            bool isPassedRoot = root.isRootPassedTest();
+            if (isPassedRoot) {
+                bool isPass = root.writeRootPassword();
+                if (isPass) {
+                    cout << "Starting operation...\n";
+                }
+                else {
+                    cout << "Wrong password exiting!";
+                    break;
+                }
+            }
         }
         if (console == "exit") {
             cout << "Exiting...\n";
@@ -206,6 +250,14 @@ void terminal() {
           }
         } else if (console == "set-language"){
           language.setLanguage();
+        } else if (console == "select-sudo") {
+            if (userSel == true) {
+                userSel = false;
+                root.selectSuperUser();
+            }
+            else {
+                cout << "Root is already selected!\n\n";
+            }
         }
     }
 }
