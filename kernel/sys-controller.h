@@ -258,6 +258,10 @@ void terminal() {
             else {
                 cout << "Root is already selected!\n\n";
             }
+        } else if (console == "clear"){
+          system("clear");
+        } else {
+          cout << "Cannot found command!\n";
         }
     }
 }
